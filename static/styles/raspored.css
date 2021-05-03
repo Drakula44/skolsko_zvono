@@ -1,0 +1,24 @@
+#nav_section{
+	margin: auto;
+	padding: 0;
+	width: 800px;
+}
+#nav_section li {
+	list-style: none;
+	float: left;
+}
+#nav_section a {
+	display: block;
+	margin: 5px;
+	width: 90px;
+	height: 90px;
+	background: #f1f;
+}
+#nav_section ul{
+	margin: 0;
+	padding: 0;
+	width: 100px;
+}
+#nav_section ul li {
+	clear: left;
+}

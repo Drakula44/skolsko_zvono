@@ -1,0 +1,49 @@
+<!doctype html>
+<head>
+{% assets "raspored_js" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+{% endassets %}
+{% assets "raspored_css" %}
+            <link rel="stylesheet" href="{{ ASSET_URL }}" />
+{% endassets %}
+</head>
+<title>Hello from Flask</title>
+
+<style type="text/css">
+
+</style>
+{% if name %}
+  <h1>Hello {{ name }}!</h1>
+{% else %}
+  <h1>Hello, World!</h1>
+{% endif %}
+
+<ul id="raspored">
+{% for item in raspored %}
+    <li>{{ item }}</li>
+{% endfor %}
+</ul>
+
+
+<ul id="nav_section">
+{% for i in range(7) %}
+    <li id="timeEntry-{{ i }}">
+	<ul>
+	{% if diw[i] %}
+        	<h3>{{ diw[i] }}</h3>
+	{% endif %}
+	</ul>
+    {% for j in range(raspored[i]|length) %}
+        <ul id="timeEntry-{{ i }}_{{ j }}">
+        <a href="#">
+        {{ raspored[i][j] }}
+        </a>
+        </ul>
+    {% endfor %}
+    <ul id="button-{{ i }}">
+    <input onclick="addRow(this)" type="button" value="Add new" id="addNew-{{ i }}">
+    </ul>
+    </li>
+{% endfor %}
+</ul>
+</body></html>
