@@ -10,6 +10,6 @@ function addRow(element) {
   {
     newId = document.getElementById(element.id).parentElement.parentElement.id.concat("_0");
   }
-  var newEntry = $( "<ul id=".concat(newId).concat("><a href=\"#\">Proba</a></ul>"));
+  var newEntry = $( `<ul id="${newId}">Od:<input type="time" id="${newId}" name="${newId}"><br>Do:<input type="time" id="${newId}" name="${newId}"></ul>`);
   newEntry.insertBefore("#".concat(document.getElementById(element.id).parentElement.id))
   }
