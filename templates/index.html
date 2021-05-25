@@ -1,0 +1,29 @@
+<!doctype html>
+
+<head>
+    {% assets "main_css" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}" />
+    {% endassets %}
+</head>
+<title>Hello from Flask</title>
+
+<style type="text/css">
+
+</style>
+
+
+
+<form action="/raspored" method="get">
+<input class="submit2" type="submit" value="Raspored casova">
+</form>
+<form action="/toggle" method="get">
+    {% if working is sameas true %}
+    <input class="submit" type="submit" value="Ugasite zvono">
+    {% endif %}
+    {% if working is sameas false %}
+    <input class="submit" type="submit" value="Upalite zvono">
+    {% endif %}
+</form>
+</body>
+
+</html>
