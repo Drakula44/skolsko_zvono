@@ -21,7 +21,6 @@ logging.basicConfig(filename='logs.log',
 logger = logging.getLogger(__name__)
 
 
-
 def run_continuously(interval=1):
     cease_continuous_run = threading.Event()
 
@@ -36,6 +35,17 @@ def run_continuously(interval=1):
     continuous_thread.start()
     return cease_continuous_run
 
+def falls_ring():
+    print("NEst!!!!!!!!!",sys.stderr)
+
+
+schedule.every(15).seconds.do(falls_ring)
+stop_run_continuously = run_continuously()
+
+
+
+
+
 
 
 
@@ -44,16 +54,20 @@ manager = Manager(app)
 assets = Environment(app)
 assets.register(data.bundles)
 
+
 def ring_bell():
     print("RING!!!!!!!!!",sys.stderr)
     logger.info("RING!!!!!!!!!RING!!!!!!!!!")
 
 def stop_schedule():
     schedule.clear()
+    stop_run_continuously.set()
 
 def refresh_schedule():
     schedule.clear()
+    stop_run_continuously.set()
     niz = data.weekly_schedule
+    stop_run_continuously = run_continuously()
     for i in range(7):
         lena = 0
         if i == 0:
@@ -210,5 +224,4 @@ def change_schedule():
         return "what"
         
 #refresh_schedule()
-stop_run_continuously = run_continuously()
 # stop_run_continuously.set()
