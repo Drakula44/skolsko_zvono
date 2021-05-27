@@ -1,0 +1,30 @@
+<!doctype html>
+
+<head>
+    {% assets "main_css" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}" />
+    {% endassets %}
+</head>
+<title>Zvono</title>
+
+<style type="text/css">
+
+</style>
+
+
+<ul >
+    <li>
+        <a href="/raspored" style="font-size: 40px;">Promenite raspored</a>
+    </li>
+    {% if working is sameas true %}
+    <a href="/toggle" style="font-size: 40px;">Ugasite zvono</a>
+    {% endif %}
+    {% if working is sameas false %}
+    <a href="/toggle" style="font-size: 40px;">Uplatite zvono</a>
+    {% endif %}
+</ul>
+
+
+</body>
+
+</html>

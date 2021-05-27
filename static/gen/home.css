@@ -1,1 +1,29 @@
-#nav_section{margin:auto;padding:0;width:1500px}#nav_section li{list-style:none;float:left;padding:5px;background:#35363A}#nav_section a{display:block;margin:5px;width:90px;height:90px;background:#f1f}#nav_section ul{margin:0;padding:0;padding-bottom:15px;width:150px}#nav_section ul li{clear:left}#nav_section input{width:100px}
+#nav_section{
+	margin: auto;
+	padding: 0;
+	width: 1500px;
+}
+#nav_section li {
+	list-style: none;
+	float: left;
+	padding: 5px;
+	background: #c7c7c7;
+}
+#nav_section ul{
+	margin: 0;
+	padding: 0;
+	padding-bottom: 15px;
+	width: 150px;
+}
+#nav_section ul li {
+	clear: left;
+}
+#nav_section input {
+	width: 120px;
+}
+.removeButton
+{
+	width: 20px !important;
+	height: 20px !important;
+}
+

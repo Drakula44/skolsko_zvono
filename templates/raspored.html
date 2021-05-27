@@ -13,143 +13,34 @@
 <style type="text/css">
 
 </style>
-{% if name %}
-<h1>Hello {{ name }}!</h1>
-{% else %}
-<h1>Hello, World!</h1>
-{% endif %}
 
 
-<form action="/submit" method="post">
+<body>
+<form action="/submit" method="post" style="display: flex; flex-direction: column;">
     <ul id="nav_section">
-        <li id="timeEntry-0">
+        {% for i in range(7) %}
+            <li id="timeEntry-{{ i }}">
             <ul>
-                {% if diw['monday'] %}
-                <h3>{{ diw['monday'] }}</h3>
-                {% endif %}
+            {% if diw[i] %}
+                    <h3>{{ diw[i] }}</h3>
+            {% endif %}
             </ul>
-            {% for j in range(raspored['monday']|length) %}
+            {% for j in range(raspored[i]|length) %}
             <ul id="timeEntry-{{ i }}_{{ j }}">
-                Od:<input type="time" id="timeEntryfirst-{{ i }}_{{ j }}" name="timeEntryfirst-{{ i }}_{{ j }}"
-                    value="{{ raspored['monday'][j][0] }}"><br>
+                    <input onclick="removeRow(this)" type="button" value="X" id="timeEntry-{{ i }}_{{ j }}" class="removeButton"><br>
+                    Od:<input type="time" id="timeEntryfirst-{{ i }}_{{ j }}" name="timeEntryfirst-{{ i }}_{{ j }}"
+                    value="{{ raspored[i][j][0] }}"><br>
                 Do:<input type="time" id="timeEntrysecond-{{ i }}_{{ j }}" name="timeEntrysecond-{{ i }}_{{ j }}"
-                    value="{{ raspored['monday'][j][1] }}">
-            </ul>
-            {% endfor %}
+                    value="{{ raspored[i][j][1] }}">
+                </ul>
+            {% endfor %}    
             <ul id="button-{{ i }}">
-                <input onclick="addRow(this)" type="button" value="Add new" id="addNew-{{ i }}">
+            <input onclick="addRow(this)" type="button" value="Dodajte novi čas" id="addNew-{{ i }}">
             </ul>
-        </li>
-        <li id="timeEntry-1">
-            <ul>
-                {% if diw["tuesday"] %}
-                <h3>{{ diw["tuesday"] }}</h3>
-                {% endif %}
-            </ul>
-            {% for j in range(raspored["tuesday"]|length) %}
-            <ul id="timeEntry-{{ i }}_{{ j }}">
-                Od:<input type="time" id="timeEntryfirst-{{ i }}_{{ j }}" name="timeEntryfirst-{{ i }}_{{ j }}"
-                    value="{{ raspored['tuesday'][j][0] }}"><br>
-                Do:<input type="time" id="timeEntrysecond-{{ i }}_{{ j }}" name="timeEntrysecond-{{ i }}_{{ j }}"
-                    value="{{ raspored['tuesday'][j][1] }}">
-            </ul>
-            {% endfor %}
-            <ul id="button-{{ i }}">
-                <input onclick="addRow(this)" type="button" value="Add new" id="addNew-{{ i }}">
-            </ul>
-        </li>
-        <li id="timeEntry-2">
-            <ul>
-                {% if diw['wednesday'] %}
-                <h3>{{ diw['wednesday'] }}</h3>
-                {% endif %}
-            </ul>
-            {% for j in range(raspored['wednesday']|length) %}
-            <ul id="timeEntry-{{ i }}_{{ j }}">
-                Od:<input type="time" id="timeEntryfirst-{{ i }}_{{ j }}" name="timeEntryfirst-{{ i }}_{{ j }}"
-                    value="{{ raspored['wednesday'][j][0] }}"><br>
-                Do:<input type="time" id="timeEntrysecond-{{ i }}_{{ j }}" name="timeEntrysecond-{{ i }}_{{ j }}"
-                    value="{{ raspored['wednesday'][j][1] }}">
-            </ul>
-            {% endfor %}
-            <ul id="button-{{ i }}">
-                <input onclick="addRow(this)" type="button" value="Add new" id="addNew-{{ i }}">
-            </ul>
-        </li>
-        <li id="timeEntry-3">
-            <ul>
-                {% if diw['thursday'] %}
-                <h3>{{ diw['thursday'] }}</h3>
-                {% endif %}
-            </ul>
-            {% for j in range(raspored['thursday']|length) %}
-            <ul id="timeEntry-{{ i }}_{{ j }}">
-                Od:<input type="time" id="timeEntryfirst-{{ i }}_{{ j }}" name="timeEntryfirst-{{ i }}_{{ j }}"
-                    value="{{ raspored['thursday'][j][0] }}"><br>
-                Do:<input type="time" id="timeEntrysecond-{{ i }}_{{ j }}" name="timeEntrysecond-{{ i }}_{{ j }}"
-                    value="{{ raspored['thursday'][j][1] }}">
-            </ul>
-            {% endfor %}
-            <ul id="button-{{ i }}">
-                <input onclick="addRow(this)" type="button" value="Add new" id="addNew-{{ i }}">
-            </ul>
-        </li>
-        <li id="timeEntry-4">
-            <ul>
-                {% if diw['friday'] %}
-                <h3>{{ diw['friday'] }}</h3>
-                {% endif %}
-            </ul>
-            {% for j in range(raspored['friday']|length) %}
-            <ul id="timeEntry-{{ i }}_{{ j }}">
-                Od:<input type="time" id="timeEntryfirst-{{ i }}_{{ j }}" name="timeEntryfirst-{{ i }}_{{ j }}"
-                    value="{{ raspored['friday'][j][0] }}"><br>
-                Do:<input type="time" id="timeEntrysecond-{{ i }}_{{ j }}" name="timeEntrysecond-{{ i }}_{{ j }}"
-                    value="{{ raspored['friday'][j][1] }}">
-            </ul>
-            {% endfor %}
-            <ul id="button-{{ i }}">
-                <input onclick="addRow(this)" type="button" value="Add new" id="addNew-{{ i }}">
-            </ul>
-        </li>
-        <li id="timeEntry-5">
-            <ul>
-                {% if diw['saturday'] %}
-                <h3>{{ diw['saturday'] }}</h3>
-                {% endif %}
-            </ul>
-            {% for j in range(raspored['saturday']|length) %}
-            <ul id="timeEntry-{{ i }}_{{ j }}">
-                Od:<input type="time" id="timeEntryfirst-{{ i }}_{{ j }}" name="timeEntryfirst-{{ i }}_{{ j }}"
-                    value="{{ raspored['saturday'][j][0] }}"><br>
-                Do:<input type="time" id="timeEntrysecond-{{ i }}_{{ j }}" name="timeEntrysecond-{{ i }}_{{ j }}"
-                    value="{{ raspored['saturday'][j][1] }}">
-            </ul>
-            {% endfor %}
-            <ul id="button-{{ i }}">
-                <input onclick="addRow(this)" type="button" value="Add new" id="addNew-{{ i }}">
-            </ul>
-        </li>
-        <li id="timeEntry-6">
-            <ul>
-                {% if diw['sunday'] %}
-                <h3>{{ diw['sunday'] }}</h3>
-                {% endif %}
-            </ul>
-            {% for j in range(raspored['sunday']|length) %}
-            <ul id="timeEntry-{{ i }}_{{ j }}">
-                Od:<input type="time" id="timeEntryfirst-{{ i }}_{{ j }}" name="timeEntryfirst-{{ i }}_{{ j }}"
-                    value="{{ raspored['sunday'][j][0] }}"><br>
-                Do:<input type="time" id="timeEntrysecond-{{ i }}_{{ j }}" name="timeEntrysecond-{{ i }}_{{ j }}"
-                    value="{{ raspored['sunday'][j][1] }}">
-            </ul>
-            {% endfor %}
-            <ul id="button-{{ i }}">
-                <input onclick="addRow(this)" type="button" value="Add new" id="addNew-{{ i }}">
-            </ul>
-        </li>
+            </li>
+        {% endfor %}
     </ul>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Promenite raspored" class="submit" style="font-size: 50px;">
 </form>
 </body>
 
