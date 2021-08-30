@@ -39,7 +39,7 @@ def falls_ring():
     print("NEst!!!!!!!!!",sys.stderr)
 
 
-schedule.every(15).seconds.do(falls_ring)
+# schedule.every(15).seconds.do(falls_ring)
 stop_run_continuously = run_continuously()
 
 
